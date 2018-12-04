@@ -63,4 +63,27 @@ class CellTest < Minitest::Test
     assert_equal 2, cell.ship.health
   end
 
+  def test_cell_renders_M_when_shot_at_and_empty
+    skip
+    cell = Cell.new("B4")
+
+    assert_equal ".", cell.render
+    cell.fire_upon
+    assert_equal "M", cell.render
+  end
+
+  def test_cell_renders_H_on_hit_and_X_with_sunk_ship
+    skip
+    cell = Cell.new("B4")
+    ship = Ship.new("Cruiser", 3)
+
+    assert_equal ".", cell.render
+    cell.hit
+    assert_eqial "H", cell.render
+    2.times {cell.hit}
+    assert ship.sunk?
+    assert_equal "X", cell.render
+  end
+
+
 end
