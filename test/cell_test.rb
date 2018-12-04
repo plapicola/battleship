@@ -34,7 +34,6 @@ class CellTest < Minitest::Test
     ship = Ship.new("Cruiser", 3)
 
     assert cell.empty?
-    # binding.pry
     cell.place_ship(ship)
     assert_equal ship, cell.ship
     refute cell.empty?
