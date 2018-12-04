@@ -1,5 +1,5 @@
 require_relative '../lib/cell'
-require_relatibe '../lib/ship'
+require_relative '../lib/ship'
 require 'minitest/autorun'
 require 'minitest/pride'
 
