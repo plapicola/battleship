@@ -15,6 +15,10 @@ require 'minitest/pride'
    def test_board_is_made_of_cells
      board = Board.new
 
-   end
+     assert_equal 16, board.keys.length
+     board.cells.each do |key, value|
+       assert_instance_of Cell, value
+     end
+  end
 
- end
+end
