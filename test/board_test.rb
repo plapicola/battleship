@@ -7,12 +7,14 @@ require 'minitest/pride'
 class BoardTest < Minitest::Test
 
   def test_board_exists
+    skip
     board = Board.new
 
     assert_instance_of Board, board
   end
 
   def test_board_is_made_of_cells
+    skip
     board = Board.new
 
     assert_equal 16, board.keys.length
@@ -22,6 +24,7 @@ class BoardTest < Minitest::Test
  end
 
  def test_board_can_tell_if_a_valid_coordinate
+   skip
    board = Board.new
 
    assert board.valid_coordinate?("A1")
@@ -31,6 +34,7 @@ class BoardTest < Minitest::Test
  end
 
  def test_board_can_validate_placement_by_length
+   skip
    board = Board.new
    cruiser = Ship.new("Cruiser", 3)
    submarine = Ship.new("Submarine", 2)
@@ -40,6 +44,7 @@ class BoardTest < Minitest::Test
  end
 
  def test_board_can_validate_placement_by_consecutive
+   skip
    board = Board.new
    cruiser = Ship.new("Cruiser", 3)
    submarine = Ship.new("Submarine", 2)
@@ -50,6 +55,7 @@ class BoardTest < Minitest::Test
  end
 
  def test_valid_placement_requires_no_diagonal
+   skip
    board = Board.new
    cruiser = Ship.new("Cruiser", 3)
    submarine = Ship.new("Submarine", 2)
@@ -60,6 +66,7 @@ class BoardTest < Minitest::Test
  end
 
  def test_has_ability_to_place_ships
+   skip
    board = Board.new
    cruiser = Ship.new("Cruiser", 3)
 
@@ -76,6 +83,7 @@ class BoardTest < Minitest::Test
  end
 
  def test_ships_cannot_overlap
+   skip
    board = Board.new
    cruiser = Ship.new("Cruiser", 3)
    submarine = Ship.new("Submarine", 2)
@@ -87,6 +95,7 @@ class BoardTest < Minitest::Test
  end
 
  def test_board_can_render_without_ships
+   skip
    board = Board.new
    cruiser = Ship.new("Cruiser", 3)
 
@@ -102,6 +111,7 @@ class BoardTest < Minitest::Test
   end
 
   def test_board_can_render_with_ships
+    skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
 
@@ -117,6 +127,7 @@ class BoardTest < Minitest::Test
   end
 
   def test_board_can_render_all_ship_states
+    skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
