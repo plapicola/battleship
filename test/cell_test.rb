@@ -79,5 +79,16 @@ class CellTest < Minitest::Test
     assert_equal "X", cell.render
   end
 
+  def test_cell_renders_S_for_ships_with_optional_flag
+    cell = Cell.new("B4")
+    ship = Ship.new("Cruiser", 3)
+
+    assert_equal "." cell.render
+    cell.place_ship(ship)
+    assert_equal "S" cell.render
+    cell.fire_upon
+    assert_equal "H" cell.render
+  end
+
 
 end
