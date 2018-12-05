@@ -113,6 +113,27 @@ class BoardTest < Minitest::Test
                "C . . . . \n" +
                "D . . . . \n"
 
-    assert_equal expected, board.render
+    assert_equal expected, board.render(true)
+  end
+
+  def test_board_can_render_all_ship_states
+    board = Board.new
+    cruiser = Ship.new("Cruiser", 3)
+    submarine = Ship.new("Submarine", 2)
+
+    board.place(cruiser, ["A1", "A2", "A3"])
+    board.place(submarine, ["C1", "D1"])
+    board.fire_at("A1")
+    board.fire_at("C1")
+    board.fire_at("D1")
+    board.fire_at("D4")
+
+    expected = "  1 2 3 4 \n" +
+               "A H . . . \n" +
+               "B . . . . \n" +
+               "C X . . . \n" +
+               "D X . . M \n"
+
+     assert_equal expected, board.render
   end
 end
