@@ -85,4 +85,34 @@ class BoardTest < Minitest::Test
    board.place(cruiser, ["A1", "A2", "A3"])
    refute board.valid_placement?(subaring, ["A1", "A2"])
  end
+
+ def test_board_can_render_without_ships
+   board = Board.new
+   cruiser = Ship.new("Cruiser", 3)
+
+   board.place(cruiser, ["A1", "A2", "A3"])
+
+   expected = "  1 2 3 4 \n" +
+              "A . . . . \n" +
+              "B . . . . \n" +
+              "C . . . . \n" +
+              "D . . . . \n"
+
+    assert_equal expected, board.render
+  end
+
+  def test_board_can_render_with_ships
+    board = Board.new
+    cruiser = Ship.new("Cruiser", 3)
+
+    board.place(cruiser, ["A1", "A2", "A3"])
+
+    expected = "  1 2 3 4 \n" +
+               "A S S S . \n" +
+               "B . . . . \n" +
+               "C . . . . \n" +
+               "D . . . . \n"
+
+    assert_equal expected, board.render
+  end
 end
