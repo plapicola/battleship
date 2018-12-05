@@ -83,11 +83,11 @@ class CellTest < Minitest::Test
     cell = Cell.new("B4")
     ship = Ship.new("Cruiser", 3)
 
-    assert_equal "." cell.render
+    assert_equal "." cell.render(true)
     cell.place_ship(ship)
-    assert_equal "S" cell.render
+    assert_equal "S" cell.render(true)
     cell.fire_upon
-    assert_equal "H" cell.render
+    assert_equal "H" cell.render(true)
   end
 
 
