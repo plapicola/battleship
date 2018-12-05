@@ -70,7 +70,7 @@ class BoardTest < Minitest::Test
    board = Board.new
    cruiser = Ship.new("Cruiser", 3)
 
-   assert board.valid_placement?(cruiser, ["A1", "B1", "C1"])
+   assert board.valid_placement?(cruiser, ["A1", "A2", "A3"])
    board.place(cruiser, ["A1", "A2", "A3"])
 
    cell_1 = board.cells["A1"]
@@ -91,7 +91,7 @@ class BoardTest < Minitest::Test
    assert board.valid_placement?(cruiser, ["A1", "A2", "A3"])
    assert board.valid_placement?(submarine, ["A1", "A2"])
    board.place(cruiser, ["A1", "A2", "A3"])
-   refute board.valid_placement?(subaring, ["A1", "A2"])
+   refute board.valid_placement?(submarine, ["A1", "A2"])
  end
 
  def test_board_can_render_without_ships
