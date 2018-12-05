@@ -34,7 +34,6 @@ class CellTest < Minitest::Test
     ship = Ship.new("Cruiser", 3)
 
     assert cell.empty?
-    # binding.pry
     cell.place_ship(ship)
     assert_equal ship, cell.ship
     refute cell.empty?
@@ -78,6 +77,17 @@ class CellTest < Minitest::Test
     2.times {cell.hit}
     assert ship.sunk?
     assert_equal "X", cell.render
+  end
+
+  def test_cell_renders_S_for_ships_with_optional_flag
+    cell = Cell.new("B4")
+    ship = Ship.new("Cruiser", 3)
+
+    assert_equal "." cell.render(true)
+    cell.place_ship(ship)
+    assert_equal "S" cell.render(true)
+    cell.fire_upon
+    assert_equal "H" cell.render(true)
   end
 
 
