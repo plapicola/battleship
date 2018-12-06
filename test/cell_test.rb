@@ -58,7 +58,7 @@ class CellTest < Minitest::Test
   end
 
   def test_cell_renders_M_when_shot_at_and_empty
-    skip
+    # skip
     cell = Cell.new("B4")
 
     assert_equal ".", cell.render
@@ -67,27 +67,29 @@ class CellTest < Minitest::Test
   end
 
   def test_cell_renders_H_on_hit_and_X_with_sunk_ship
-    skip
+    # skip
     cell = Cell.new("B4")
     ship = Ship.new("Cruiser", 3)
+    cell.place_ship(ship)
 
     assert_equal ".", cell.render
-    cell.hit
-    assert_eqial "H", cell.render
-    2.times {cell.hit}
+    cell.fire_upon
+    assert_equal "H", cell.render
+    2.times {cell.fire_upon}
     assert ship.sunk?
     assert_equal "X", cell.render
   end
 
   def test_cell_renders_S_for_ships_with_optional_flag
+    # skip
     cell = Cell.new("B4")
     ship = Ship.new("Cruiser", 3)
 
-    assert_equal "." cell.render(true)
+    assert_equal ".", cell.render(true)
     cell.place_ship(ship)
-    assert_equal "S" cell.render(true)
+    assert_equal "S", cell.render(true)
     cell.fire_upon
-    assert_equal "H" cell.render(true)
+    assert_equal "H", cell.render(true)
   end
 
 
