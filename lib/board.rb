@@ -35,15 +35,45 @@ class Board
  end
 
  def valid_placement?(ship, coordinates)
-   ship.length == coordinates.count
+   if ship.length == coordinates.count
+     if consecutive_numbers(coordinates)
+       return true
+     end
+     if consecutive_letters(coordinates)
+       return true
+     end
+   end
+   return false
  end
 
- def consecutive_numbers(number)
+ def consecutive_numbers(coordinates)
    coordinates.each_cons(2) do|consecutive_pair|
-     if consecutive_pair[1][1].to_i - consecutive_pair[0][1].to_i != 1  
+     if consecutive_pair[1][1].to_i - consecutive_pair[0][1].to_i != 1
        return false
      end
   end
+  return true
+  end
 
+ def consecutive_letters(coordinates)
+   coordinates.each_cons(2) do|consecutive_pair|
+     if consecutive_pair[1][0].ord - consecutive_pair[0][0].ord != 1
+       return false
+     end
+  end
+  return true
  end
+
+ def same_numbers(coordinates)
+  coordinates.all? do |coordinate|
+    coordinate[1] == coordinates[0][1]
+ end
+end
+
+ def same_letters(coordinates)
+  coordinates.all? do |coordinate|
+    coordinate[0] == coordinates[0][0]
+ end
+end 
+
 end

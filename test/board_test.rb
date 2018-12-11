@@ -12,6 +12,20 @@ class BoardTest < Minitest::Test
     assert_instance_of Board, board
   end
 
+  def test_if_board_can_tell_has_horizontal
+    board = Board.new
+
+    assert board.consecutive_numbers(["A1","A2","A3"])
+    refute board.consecutive_numbers(["A1", "A3"])
+  end
+
+  def test_if_board_has_vertical_coordinates
+    board = Board.new
+
+  assert board.consecutive_letters(["A1", "B1", "C1"])
+  refute board.consecutive_letters(["A1", "C1"])
+  end
+
   def test_board_is_made_of_cells
     board = Board.new
 
@@ -40,7 +54,7 @@ class BoardTest < Minitest::Test
  end
 
  def test_board_can_validate_placement_by_consecutive
-   skip
+
    board = Board.new
    cruiser = Ship.new("Cruiser", 3)
    submarine = Ship.new("Submarine", 2)
@@ -48,6 +62,21 @@ class BoardTest < Minitest::Test
    assert board.valid_placement?(cruiser, ["A1", "A2", "A3",])
    refute board.valid_placement?(submarine, ["A1", "A3"])
    assert board.valid_placement?(submarine, ["A1", "B1"])
+ end
+
+ def test_if_all_numbers_are_same
+   board = Board.new
+
+   assert board.same_numbers(["A1", "B1", "C1"])
+   refute board.same_numbers(["A1","A3"])
+ end
+
+ def test_if_all_letters_are_the_same
+
+   board = Board.new
+
+  assert board.same_letters(["A1", "A3", "A4"])
+  refute board.same_letters(["A1", "B1", "C2"])
  end
 
  def test_valid_placement_requires_no_diagonal
