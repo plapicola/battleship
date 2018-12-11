@@ -7,24 +7,21 @@ require 'minitest/pride'
 class BoardTest < Minitest::Test
 
   def test_board_exists
-    skip
     board = Board.new
 
     assert_instance_of Board, board
   end
 
   def test_board_is_made_of_cells
-    skip
     board = Board.new
 
-    assert_equal 16, board.keys.length
+    assert_equal 16, board.cells.keys.length
     board.cells.each do |key, value|
       assert_instance_of Cell, value
     end
  end
 
  def test_board_can_tell_if_a_valid_coordinate
-   skip
    board = Board.new
 
    assert board.valid_coordinate?("A1")
@@ -34,7 +31,6 @@ class BoardTest < Minitest::Test
  end
 
  def test_board_can_validate_placement_by_length
-   skip
    board = Board.new
    cruiser = Ship.new("Cruiser", 3)
    submarine = Ship.new("Submarine", 2)
