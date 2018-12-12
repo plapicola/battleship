@@ -80,7 +80,6 @@ class BoardTest < Minitest::Test
  end
 
  def test_valid_placement_requires_no_diagonal
-   skip
    board = Board.new
    cruiser = Ship.new("Cruiser", 3)
    submarine = Ship.new("Submarine", 2)
@@ -88,10 +87,10 @@ class BoardTest < Minitest::Test
    assert board.valid_placement?(cruiser, ["A1", "A2", "A3"])
    refute board.valid_placement?(cruiser, ["A1", "B2", "C3"])
    assert board.valid_placement?(submarine, ["A1", "B1"])
+   refute board.valid_placement?(cruiser, ["A3", "A4", "A5"])
  end
 
  def test_has_ability_to_place_ships
-   skip
    board = Board.new
    cruiser = Ship.new("Cruiser", 3)
 
@@ -108,7 +107,7 @@ class BoardTest < Minitest::Test
  end
 
  def test_ships_cannot_overlap
-   skip
+
    board = Board.new
    cruiser = Ship.new("Cruiser", 3)
    submarine = Ship.new("Submarine", 2)
@@ -120,7 +119,7 @@ class BoardTest < Minitest::Test
  end
 
  def test_board_can_render_without_ships
-   skip
+
    board = Board.new
    cruiser = Ship.new("Cruiser", 3)
 
