@@ -7,24 +7,35 @@ require 'minitest/pride'
 class BoardTest < Minitest::Test
 
   def test_board_exists
-    skip
     board = Board.new
 
     assert_instance_of Board, board
   end
 
-  def test_board_is_made_of_cells
-    skip
+  def test_if_board_can_tell_has_horizontal
     board = Board.new
 
-    assert_equal 16, board.keys.length
+    assert board.consecutive_numbers(["A1","A2","A3"])
+    refute board.consecutive_numbers(["A1", "A3"])
+  end
+
+  def test_if_board_has_vertical_coordinates
+    board = Board.new
+
+  assert board.consecutive_letters(["A1", "B1", "C1"])
+  refute board.consecutive_letters(["A1", "C1"])
+  end
+
+  def test_board_is_made_of_cells
+    board = Board.new
+
+    assert_equal 16, board.cells.keys.length
     board.cells.each do |key, value|
       assert_instance_of Cell, value
     end
  end
 
  def test_board_can_tell_if_a_valid_coordinate
-   skip
    board = Board.new
 
    assert board.valid_coordinate?("A1")
@@ -34,7 +45,6 @@ class BoardTest < Minitest::Test
  end
 
  def test_board_can_validate_placement_by_length
-   skip
    board = Board.new
    cruiser = Ship.new("Cruiser", 3)
    submarine = Ship.new("Submarine", 2)
@@ -44,7 +54,7 @@ class BoardTest < Minitest::Test
  end
 
  def test_board_can_validate_placement_by_consecutive
-   skip
+
    board = Board.new
    cruiser = Ship.new("Cruiser", 3)
    submarine = Ship.new("Submarine", 2)
@@ -54,8 +64,22 @@ class BoardTest < Minitest::Test
    assert board.valid_placement?(submarine, ["A1", "B1"])
  end
 
+ def test_if_all_numbers_are_same
+   board = Board.new
+
+   assert board.same_numbers(["A1", "B1", "C1"])
+   refute board.same_numbers(["A1","A3"])
+ end
+
+ def test_if_all_letters_are_the_same
+
+   board = Board.new
+
+  assert board.same_letters(["A1", "A3", "A4"])
+  refute board.same_letters(["A1", "B1", "C2"])
+ end
+
  def test_valid_placement_requires_no_diagonal
-   skip
    board = Board.new
    cruiser = Ship.new("Cruiser", 3)
    submarine = Ship.new("Submarine", 2)
@@ -63,10 +87,10 @@ class BoardTest < Minitest::Test
    assert board.valid_placement?(cruiser, ["A1", "A2", "A3"])
    refute board.valid_placement?(cruiser, ["A1", "B2", "C3"])
    assert board.valid_placement?(submarine, ["A1", "B1"])
+   refute board.valid_placement?(cruiser, ["A3", "A4", "A5"])
  end
 
  def test_has_ability_to_place_ships
-   skip
    board = Board.new
    cruiser = Ship.new("Cruiser", 3)
 
@@ -83,7 +107,7 @@ class BoardTest < Minitest::Test
  end
 
  def test_ships_cannot_overlap
-   skip
+
    board = Board.new
    cruiser = Ship.new("Cruiser", 3)
    submarine = Ship.new("Submarine", 2)
@@ -95,7 +119,7 @@ class BoardTest < Minitest::Test
  end
 
  def test_board_can_render_without_ships
-   skip
+
    board = Board.new
    cruiser = Ship.new("Cruiser", 3)
 
