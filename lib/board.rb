@@ -97,8 +97,28 @@ class Board
         @cells[coordinate].place_ship(ship)
       end
     end
+  end
 
+  def render(show_ships = false)
+    rendered_board = "  1 2 3 4 \n"
+    coordinates = @cells.keys
+    current_key = 0
 
+    4.times do
+      rendered_board  += "#{coordinates[current_key][0]} " # Get letter
+      4.times do
+        rendered_board += "#{@cells[coordinates[current_key]].render(show_ships)} "
+        current_key += 1
+      end
+      rendered_board += "\n"
+    end
+    return rendered_board
+  end
+
+  def fire_at(coordinate)
+    if valid_coordinate?(coordinate)
+      @cells[coordinate].fire_upon
+    end
   end
 
 
