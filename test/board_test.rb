@@ -135,7 +135,7 @@ class BoardTest < Minitest::Test
   end
 
   def test_board_can_render_with_ships
-    skip
+    # skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
 
@@ -151,7 +151,7 @@ class BoardTest < Minitest::Test
   end
 
   def test_board_can_render_all_ship_states
-    skip
+    # skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
@@ -173,7 +173,7 @@ class BoardTest < Minitest::Test
   end
 
   def test_board_can_render_all_ship_states_with_ships
-    skip
+    # skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
