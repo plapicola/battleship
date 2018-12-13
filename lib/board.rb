@@ -1,6 +1,9 @@
 require_relative 'cell'
 
 class Board
+
+  attr_reader :cells
+
   def initialize
     @cells = generate_board
   end
@@ -24,10 +27,6 @@ class Board
       "D3" => Cell.new("D3"),
       "D4" => Cell.new("D4")
     }
-  end
-
-  def cells
-    @cells
   end
 
   def valid_coordinate?(coordinate)
@@ -120,6 +119,5 @@ class Board
       @cells[coordinate].fire_upon
     end
   end
-
 
 end
